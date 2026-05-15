@@ -16,7 +16,7 @@ import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
-public class CounponService {
+public class CouponService {
 
     private final CouponRepository repository;
     private final CouponMapper mapper;
@@ -26,9 +26,7 @@ public class CounponService {
                 request.getCode(),
                 request.getDescription(),
                 request.getDiscountValue(),
-                request.getExpirationDate(),
-                request.getPublished()
-        );
+                request.getExpirationDate());
         CouponEntity entity = mapper.convertToEntity(coupon);
         return mapper.convertToResponse(repository.save(entity));
     }
@@ -36,7 +34,7 @@ public class CounponService {
     @Transactional
     public void delete(UUID id) {
         CouponEntity entity = findById(id);
-        if (entity.getDeleted()) {
+        if (entity.isDeleted()) {
             throw new ApiException("Coupon already deleted", HttpStatus.NOT_FOUND, "Coupon already deleted");
         }
         entity.setDeleted(true);

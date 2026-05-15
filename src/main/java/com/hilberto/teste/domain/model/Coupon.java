@@ -10,20 +10,29 @@ import java.util.Objects;
 
 @Getter
 public class Coupon {
-    private final String code;
+    private String code;
     private String description;
     private Double discountValue;
     private LocalDateTime expirationDate;
-    private Boolean published;
-    private Boolean deleted;
+    private boolean published;
+    private boolean deleted;
+    private boolean redeemed;
 
-    public Coupon(String code, String description, Double discountValue, LocalDateTime expirationDate, Boolean published) {
+    public Coupon(String code, String description, Double discountValue, LocalDateTime expirationDate) {
         this.code = cleanCode(code);
-        this.description = description;
+        this.description = validateDescription(description);
         this.discountValue = validateDiscount(discountValue);
         this.expirationDate = validateExpiration(expirationDate);
-        this.published = published;
+        this.published = false;
         this.deleted = false;
+        this.redeemed = false;
+    }
+
+    public String validateDescription(String description){
+        if(Objects.isNull(description)){
+            throw new ApiException("The description is required", HttpStatus.BAD_REQUEST, "The description is required");
+        }
+        return description;
     }
 
     public String cleanCode(String code){

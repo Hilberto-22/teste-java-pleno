@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
+import com.hilberto.teste.domain.CouponStatus;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.SQLRestriction;
@@ -24,6 +25,10 @@ public class CouponEntity {
     private String description;
     private Double discountValue;
     private LocalDateTime expirationDate;
-    private Boolean published;
-    private Boolean deleted = false;
+
+    @Enumerated(EnumType.STRING)
+    private CouponStatus status;
+    private boolean published = false;
+    private boolean deleted = false;
+    private boolean redeemed = false;
 }

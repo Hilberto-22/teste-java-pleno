@@ -1,5 +1,6 @@
 package com.hilberto.teste.domain.dto.response;
 
+import com.hilberto.teste.domain.CouponStatus;
 import lombok.Data;
 
 import java.time.LocalDateTime;
@@ -12,14 +13,18 @@ public class CouponResponse {
     private String description;
     private Double discountValue;
     private LocalDateTime expirationDate;
-    private Boolean published;
+    private CouponStatus status;
+    private boolean published;
+    private boolean redeemed;
 
-    public CouponResponse(UUID id, String code, String description, Double discountValue, LocalDateTime expirationDate, Boolean published) {
+    public CouponResponse(UUID id, String code, String description, Double discountValue, LocalDateTime expirationDate, boolean published, boolean redeemed, CouponStatus status) {
         this.id = id;
         this.code = code;
         this.description = description;
         this.discountValue = discountValue;
         this.expirationDate = expirationDate;
+        this.status = CouponStatus.ACTIVE;
         this.published = published;
+        this.redeemed = redeemed;
     }
 }

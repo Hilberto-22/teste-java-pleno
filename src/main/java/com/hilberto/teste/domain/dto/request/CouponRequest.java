@@ -10,5 +10,4 @@ public class CouponRequest {
     private String description;
     private Double discountValue;
     private LocalDateTime expirationDate;
-    private Boolean published;
  }

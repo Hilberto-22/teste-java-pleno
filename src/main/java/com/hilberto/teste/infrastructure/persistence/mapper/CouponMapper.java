@@ -1,5 +1,6 @@
 package com.hilberto.teste.infrastructure.persistence.mapper;
 
+import com.hilberto.teste.domain.CouponStatus;
 import com.hilberto.teste.domain.dto.request.CouponRequest;
 import com.hilberto.teste.domain.dto.response.CouponResponse;
 import com.hilberto.teste.domain.model.Coupon;
@@ -15,7 +16,8 @@ public class CouponMapper {
                 .description(coupon.getDescription())
                 .discountValue(coupon.getDiscountValue())
                 .expirationDate(coupon.getExpirationDate())
-                .published(coupon.getPublished())
+                .published(coupon.isPublished())
+                .status(CouponStatus.ACTIVE)
                 .build();
     }
 
@@ -27,6 +29,8 @@ public class CouponMapper {
                 coupon.getDescription(),
                 coupon.getDiscountValue(),
                 coupon.getExpirationDate(),
-                coupon.getPublished());
+                coupon.isPublished(),
+                coupon.isRedeemed(),
+                coupon.getStatus());
     }
 }
