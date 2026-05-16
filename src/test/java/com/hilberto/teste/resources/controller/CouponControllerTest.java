@@ -2,7 +2,7 @@ package com.hilberto.teste.resources.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
-import com.hilberto.teste.domain.CouponStatus;
+import com.hilberto.teste.domain.enums.CouponStatus;
 import com.hilberto.teste.domain.dto.request.CouponRequest;
 import com.hilberto.teste.domain.dto.response.CouponResponse;
 import com.hilberto.teste.domain.service.CouponService;

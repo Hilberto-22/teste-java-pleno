@@ -1,8 +1,8 @@
 package com.hilberto.teste.domain.service;
 
-import com.hilberto.teste.domain.CouponStatus;
 import com.hilberto.teste.domain.dto.request.CouponRequest;
 import com.hilberto.teste.domain.dto.response.CouponResponse;
+import com.hilberto.teste.domain.enums.CouponStatus;
 import com.hilberto.teste.infrastructure.exception.ApiException;
 import com.hilberto.teste.infrastructure.persistence.entity.CouponEntity;
 import com.hilberto.teste.infrastructure.persistence.mapper.CouponMapper;

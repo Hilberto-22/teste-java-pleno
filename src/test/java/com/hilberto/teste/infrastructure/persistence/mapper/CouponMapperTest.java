@@ -1,6 +1,6 @@
 package com.hilberto.teste.infrastructure.persistence.mapper;
 
-import com.hilberto.teste.domain.CouponStatus;
+import com.hilberto.teste.domain.enums.CouponStatus;
 import com.hilberto.teste.domain.dto.response.CouponResponse;
 import com.hilberto.teste.domain.model.Coupon;
 import com.hilberto.teste.infrastructure.persistence.entity.CouponEntity;
