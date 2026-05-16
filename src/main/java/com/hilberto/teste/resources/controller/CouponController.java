@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.nio.file.Path;
 import java.util.UUID;
 
+@CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
 @RequestMapping(path = "/coupon")
 public class CouponController {
