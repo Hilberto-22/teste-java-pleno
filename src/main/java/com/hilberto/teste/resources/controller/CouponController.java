@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.nio.file.Path;
 import java.util.UUID;
 
 @RestController
@@ -29,5 +30,11 @@ public class CouponController {
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void delete(@PathVariable UUID id){
         couponService.delete(id);
+    }
+
+    @GetMapping("/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public ResponseEntity<CouponResponse> getByCouponFromId(@PathVariable UUID id){
+        return ResponseEntity.ok(couponService.getByCouponFromId(id));
     }
 }

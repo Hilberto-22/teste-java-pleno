@@ -44,4 +44,10 @@ public class CouponService {
     private CouponEntity findById(UUID id) {
         return repository.findById(id).orElseThrow(() -> new ApiException("Coupon not found", HttpStatus.NOT_FOUND, "Coupon not found"));
     }
+
+    @Transactional(readOnly = true)
+    public CouponResponse getByCouponFromId(UUID id) {
+        CouponEntity entity = findById(id);
+        return mapper.convertToResponse(entity);
+    }
 }
