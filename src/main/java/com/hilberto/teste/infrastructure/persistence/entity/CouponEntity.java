@@ -1,11 +1,11 @@
 package com.hilberto.teste.infrastructure.persistence.entity;
 import java.time.LocalDateTime;
 import java.util.UUID;
-
-import com.hilberto.teste.domain.CouponStatus;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.SQLRestriction;
+
+import com.hilberto.teste.domain.enums.CouponStatus;
 
 @Entity
 @Table(name = "coupons")

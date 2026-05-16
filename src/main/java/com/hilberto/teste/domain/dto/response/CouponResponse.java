@@ -1,10 +1,10 @@
 package com.hilberto.teste.domain.dto.response;
-
-import com.hilberto.teste.domain.CouponStatus;
 import lombok.Data;
 
 import java.time.LocalDateTime;
 import java.util.UUID;
+
+import com.hilberto.teste.domain.enums.CouponStatus;
 
 @Data
 public class CouponResponse {
