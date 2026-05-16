@@ -26,28 +26,36 @@ public class CouponService {
                 request.getCode(),
                 request.getDescription(),
                 request.getDiscountValue(),
-                request.getExpirationDate());
+                request.getExpirationDate(),
+                request.isPublished()
+            );
         CouponEntity entity = mapper.convertToEntity(coupon);
         return mapper.convertToResponse(repository.save(entity));
-    }
-
-    @Transactional
-    public void delete(UUID id) {
-        CouponEntity entity = findById(id);
-        if (entity.isDeleted()) {
-            throw new ApiException("Coupon already deleted", HttpStatus.NOT_FOUND, "Coupon already deleted");
-        }
-        entity.setDeleted(true);
-        repository.save(entity);
-    }
-
-    private CouponEntity findById(UUID id) {
-        return repository.findById(id).orElseThrow(() -> new ApiException("Coupon not found", HttpStatus.NOT_FOUND, "Coupon not found"));
     }
 
     @Transactional(readOnly = true)
     public CouponResponse getByCouponFromId(UUID id) {
         CouponEntity entity = findById(id);
         return mapper.convertToResponse(entity);
+    }
+
+    @Transactional
+    public void delete(UUID id) {
+        CouponEntity entity = findByIdIncludingDeleted(id);
+        if (entity.isDeleted()) {
+            throw new ApiException("Coupon already deleted", HttpStatus.BAD_REQUEST, "Coupon already deleted");
+        }
+        entity.setDeleted(true);
+        repository.save(entity);
+    }
+
+    private CouponEntity findById(UUID id) {
+        return repository.findById(id)
+                .orElseThrow(() -> new ApiException("Coupon not found", HttpStatus.NOT_FOUND, "Coupon not found"));
+    }
+
+    private CouponEntity findByIdIncludingDeleted(UUID id) {
+        return repository.findByIdIncludingDeleted(id)
+                .orElseThrow(() -> new ApiException("Coupon not found", HttpStatus.NOT_FOUND, "Coupon not found"));
     }
 }

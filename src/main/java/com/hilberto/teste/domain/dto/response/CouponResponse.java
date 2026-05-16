@@ -23,7 +23,7 @@ public class CouponResponse {
         this.description = description;
         this.discountValue = discountValue;
         this.expirationDate = expirationDate;
-        this.status = CouponStatus.ACTIVE;
+        this.status = status;
         this.published = published;
         this.redeemed = redeemed;
     }

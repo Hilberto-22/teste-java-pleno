@@ -7,7 +7,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.nio.file.Path;
 import java.util.UUID;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
@@ -24,7 +23,7 @@ public class CouponController {
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public ResponseEntity<CouponResponse> createCoupon(@RequestBody CouponRequest request){
-        return ResponseEntity.ok(couponService.create(request));
+        return ResponseEntity.status(HttpStatus.CREATED).body(couponService.create(request));
     }
 
     @DeleteMapping("/{id}")

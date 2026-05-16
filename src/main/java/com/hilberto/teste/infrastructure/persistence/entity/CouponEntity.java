@@ -1,6 +1,4 @@
 package com.hilberto.teste.infrastructure.persistence.entity;
-
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
@@ -15,7 +13,6 @@ import org.hibernate.annotations.SQLRestriction;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
 @SQLRestriction("deleted = false")
 public class CouponEntity {
     @Id

@@ -1,7 +1,6 @@
 package com.hilberto.teste.infrastructure.persistence.mapper;
 
 import com.hilberto.teste.domain.CouponStatus;
-import com.hilberto.teste.domain.dto.request.CouponRequest;
 import com.hilberto.teste.domain.dto.response.CouponResponse;
 import com.hilberto.teste.domain.model.Coupon;
 import com.hilberto.teste.infrastructure.persistence.entity.CouponEntity;
@@ -11,14 +10,15 @@ import org.springframework.stereotype.Component;
 public class CouponMapper {
     public CouponEntity convertToEntity(Coupon coupon) {
         if (coupon == null) return null;
-        return CouponEntity.builder()
-                .code(coupon.getCode())
-                .description(coupon.getDescription())
-                .discountValue(coupon.getDiscountValue())
-                .expirationDate(coupon.getExpirationDate())
-                .published(coupon.isPublished())
-                .status(CouponStatus.ACTIVE)
-                .build();
+        CouponEntity entity = new CouponEntity();
+        entity.setCode(coupon.getCode());
+        entity.setDescription(coupon.getDescription());
+        entity.setDiscountValue(coupon.getDiscountValue());
+        entity.setExpirationDate(coupon.getExpirationDate());
+        entity.setPublished(coupon.isPublished());
+        entity.setStatus(CouponStatus.ACTIVE);
+
+        return entity;
     }
 
     public CouponResponse convertToResponse(CouponEntity coupon) {
